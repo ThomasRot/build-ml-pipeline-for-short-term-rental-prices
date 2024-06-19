@@ -1,0 +1,33 @@
+name: basic_cleaning
+conda_env: ../../conda.yml
+
+entry_points:
+  main:
+    parameters:
+
+      input_artifact:
+        description: Csv as input to dataframe.
+        type: string
+
+      output_artifact:
+        description: Name of output csv.
+        type: string
+
+      output_type:
+        description: Artifact type in W & B.
+        type: string
+
+      output_description:
+        description: Description of output artifact.
+        type: string
+
+      min_price:
+        description: Remove all entries with 'price' below min_price from the dataframe.
+        type: float
+      
+      max_price:
+        description: Remove all entries with 'price' higher than max_price from the dataframe.
+        type: float
+
+    command: >-
+        python run.py  --input_artifact {input_artifact}  --output_artifact {output_artifact} --output_type {output_type} --output_description {output_description}  --min_price {min_price} --max_price {max_price} 
